@@ -42,6 +42,9 @@ jobs:
     - name: Update geosite
       run: |
         nix-shell -p nix-update --run "nix-update --flake --commit geosite"
+    - name: Check the build
+      run: |
+        nix build .
     - name: Git push
       run: |
         git config --global pull.rebase false
