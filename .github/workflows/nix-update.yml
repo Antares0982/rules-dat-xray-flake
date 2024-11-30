@@ -38,10 +38,10 @@ jobs:
         nix flake update --commit-lock-file
     - name: Update geoip
       run: |
-        nix-shell -p nix-update --run "nix-update --flake --commit geoip"
+        nix run github:Mic92/nix-update -- --flake --commit geoip
     - name: Update geosite
       run: |
-        nix-shell -p nix-update --run "nix-update --flake --commit geosite"
+        nix run github:Mic92/nix-update -- --flake --commit geosite
     - name: Check the build
       run: |
         nix build .
