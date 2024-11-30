@@ -16,7 +16,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -r $src $out/bin
+    cp $src $out/bin/geosite.dat
     runHook postInstall
   '';
 }
