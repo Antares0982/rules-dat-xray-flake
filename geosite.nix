@@ -5,11 +5,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "xray_geosite";
-  version = "202503072210";
+  version = "202503082210";
 
   src = fetchurl {
     url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${version}/geosite.dat";
-    sha256 = "sha256-QVjQFHgorbfxwGUMN+9cvDFOwT3eHt0BVZer+2uy+30=";
+    sha256 = "sha256-fW52HO0V6VhRbpFFD2UeKHng+IyYZIsoGHIPLZpWPCA=";
   };
 
   unpackPhase = ":";
