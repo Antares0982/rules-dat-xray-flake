@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${version}/geosite.dat";
-    sha256 = "sha256-VqfWWAqe8kvxRleG6YUZg4cmEGSRTeiXFt6na3c8by8=";
+    sha256 = "sha256-+GIj+TGbSqkvJ/I40I1Kp4dgU50mPByXWM/xIFynd00=";
   };
 
   unpackPhase = ":";
