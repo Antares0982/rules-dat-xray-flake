@@ -365,11 +365,9 @@ fn parse_vless_link(s: &str) -> Result<(Value, String)> {
     Ok((template, name))
 }
 
-fn main() -> Result<()> {
-    let args = Args::parse();
-
+fn run(args: &Args) -> Result<()> {
     // Load template strictly from XRAY_TEMPLATE env var.
-    let total_template = get_total_template(&args)?;
+    let total_template = get_total_template(args)?;
 
     // Validate XRAY_CONF_DIR and subscription file
     let xray_conf_dir =
@@ -381,7 +379,7 @@ fn main() -> Result<()> {
     let client = Client::builder().user_agent("xray_sub/0.1.0").build()?;
     let responses = fetch_subscription_lines(&client, &subscription)?;
 
-    let processed_files = process_and_write(&responses, &args, &total_template, &folder)?;
+    let processed_files = process_and_write(&responses, args, &total_template, &folder)?;
 
     if processed_files.is_empty() {
         anyhow::bail!("No valid link found");
@@ -390,6 +388,30 @@ fn main() -> Result<()> {
     cleanup_folder(&folder, &processed_files)?;
 
     Ok(())
+}
+
+fn main() {
+    let args = Args::parse();
+    match run(&args) {
+        Ok(()) => {
+            if !args.headless {
+                // Best-effort desktop notification; ignore failures.
+                let _ = std::process::Command::new("notify-send")
+                    .arg("Successful Subscription updated successfully.")
+                    .status();
+            }
+        }
+        Err(e) => {
+            if args.headless {
+                eprintln!("Error: {}", e);
+            } else {
+                let _ = std::process::Command::new("notify-send")
+                    .arg(format!("Error {}", e))
+                    .status();
+            }
+            std::process::exit(1);
+        }
+    }
 }
 
 /// Load total template unless `--raw` is set. Mirrors previous behavior.
