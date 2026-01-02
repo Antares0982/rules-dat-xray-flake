@@ -32,6 +32,7 @@
         default = xray;
         geoip = pkgs.callPackage ./geoip.nix { };
         geosite = pkgs.callPackage ./geosite.nix { };
+        xray_sub = pkgs.callPackage ./xray_sub.nix { };
       });
     };
 }
