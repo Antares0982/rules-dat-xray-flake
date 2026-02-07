@@ -11,11 +11,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@main
       with:
-        token: '${{ secrets.ACTION_GITHUB_TOKEN }}'
+        token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Install nix
       uses: cachix/install-nix-action@master
       with:
-        github_access_token: '${{ secrets.ACTION_GITHUB_TOKEN }}'
+        github_access_token: '${{ secrets.GITHUB_TOKEN }}'
     - name: Import GPG key
       id: import-gpg
       uses: crazy-max/ghaction-import-gpg@master
