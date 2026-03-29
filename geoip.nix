@@ -5,7 +5,7 @@
 }:
 stdenv.mkDerivation rec {
   pname = "xray_geoip";
-  version = "202603272225";
+  version = "202603282222";
 
   src = fetchurl {
     url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${version}/geoip.dat";
