@@ -5,11 +5,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "xray_geoip";
-  version = "202605202307";
+  version = "202605212258";
 
   src = fetchurl {
     url = "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/download/${version}/geoip.dat";
-    sha256 = "sha256-kRfrC5jto+aD7Ncvdn/g+Cg3KYqeTTpIMB/xTuqUAZo=";
+    sha256 = "sha256-0unydbmWxc9na+fH5AJybh7kFfRWYtae3WSUlMpNFxM=";
   };
 
   unpackPhase = ":";
