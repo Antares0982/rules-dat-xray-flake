@@ -11,5 +11,5 @@ rustPlatform.buildRustPackage rec {
     name = pname;
     path = ./xray_sub;
   };
-  cargoHash = "sha256-gF3i+OoI7vxaBe2jzTUOt+DAIuthGcoeYbYM5sanFr8=";
+  cargoHash = "sha256-2uH1nzG/tHeceioMFSS9eWs3kGlA68ZjxqatxCK/a54=";
 }
